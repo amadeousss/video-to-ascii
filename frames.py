@@ -5,6 +5,9 @@ import moviepy.video.io.ImageSequenceClip
 
 
 def video_to_frames(input_loc, output_loc):
+    if not os.path.exists(output_loc):
+        os.makedirs(output_loc)
+
     vidcap = cv2.VideoCapture(input_loc)
     success, image = vidcap.read()
     count = 0
@@ -15,6 +18,10 @@ def video_to_frames(input_loc, output_loc):
 
 
 def ascii_frames_to_images(input_loc, output_loc, original_video):
+    # Create output directory
+    if not os.path.exists(output_loc):
+        os.makedirs(output_loc)
+
     vcap = cv2.VideoCapture(original_video)
     width = int(vcap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(vcap.get(cv2.CAP_PROP_FRAME_HEIGHT))

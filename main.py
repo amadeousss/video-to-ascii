@@ -40,6 +40,10 @@ def image_to_ascii(image_path):
 
 def video_to_ascii(video_path):
     video_to_frames(video_path, 'frames/')
+
+    if not os.path.exists('frames_ascii_txt'):
+        os.makedirs('frames_ascii_txt')
+
     for index, filename in enumerate(os.listdir('frames/')):
         content = image_to_ascii(os.path.join('frames/', f"{index}.jpg"))
         with open(f'frames_ascii_txt/{index}.txt', 'w') as f:
